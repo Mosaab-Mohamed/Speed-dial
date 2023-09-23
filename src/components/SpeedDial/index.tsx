@@ -17,7 +17,6 @@ export default function SpeedDial(props: SpeedDialProps) {
 		degree = 180,
 		backgroundColor = "#e3e3e3",
 		buttonColor = "#4f4f51",
-		itemBackgroundColor = "gray",
 		buttonsList = [],
 	} = props;
 
@@ -47,7 +46,7 @@ export default function SpeedDial(props: SpeedDialProps) {
 					distance={distance}
 					index={index}
 					isOpen={isOpen}
-					itemBackgroundColor={itemBackgroundColor}
+					backgroundColor={backgroundColor}
 					nbrItems={buttonsList.length}
 					key={index}
 				/>
