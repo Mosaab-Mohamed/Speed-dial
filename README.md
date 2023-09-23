@@ -7,8 +7,8 @@ The SpeedDial component is a versatile and customizable component for creating a
 You can use it in your React application as follows:
 
 ```jsx
-import SpeedDial from "./components/SpeedDial";
-import { ItemButton } from "./types"; // Import the necessary types
+import SpeedDial from "speed-dial";
+import { ItemButton } from "./types";
 import instagram from "/public/instagram.png";
 import facebook from "/public/facebook.png";
 import whatsapp from "/public/whatsapp.png";
