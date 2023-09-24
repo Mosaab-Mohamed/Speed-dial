@@ -1,4 +1,4 @@
-import { CSSProperties, PropsWithChildren } from "react";
+import { CSSProperties } from "react";
 
 export type SpeedDialProps = Partial<{
 	direction: Direction;
@@ -18,7 +18,6 @@ export type SpeedDialProps = Partial<{
 
 export type ButtonProps = {
 	isOpen: boolean;
-	handleClose: () => void;
 	dimension: number;
 	index: number;
 	nbrItems: number;

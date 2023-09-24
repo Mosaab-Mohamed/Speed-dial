@@ -20,7 +20,7 @@ export default function SpeedDial(props: SpeedDialProps) {
 		children,
 	} = props;
 
-	const { isOpen, setIsOpen, handleClose } = useToggle();
+	const { isOpen, setIsOpen } = useToggle();
 
 	return (
 		<StyledSpeedDialButton
@@ -49,7 +49,6 @@ export default function SpeedDial(props: SpeedDialProps) {
 						backgroundColor={backgroundColor}
 						nbrItems={children.length}
 						key={index}
-						handleClose={handleClose}
 					>
 						{item}
 					</Button>
@@ -65,7 +64,6 @@ export default function SpeedDial(props: SpeedDialProps) {
 					backgroundColor={backgroundColor}
 					nbrItems={1}
 					key={0}
-					handleClose={handleClose}
 				>
 					{children}
 				</Button>

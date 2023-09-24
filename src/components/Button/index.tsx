@@ -13,7 +13,6 @@ export default function Button(props: ButtonProps) {
 		nbrItems,
 		backgroundColor,
 		children,
-		handleClose,
 	} = props;
 
 	const [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
@@ -62,7 +61,6 @@ export default function Button(props: ButtonProps) {
 			$translateX={coordinates.x}
 			$translateY={coordinates.y}
 			$backgroundColor={backgroundColor}
-			onClick={handleClose}
 		>
 			{children}
 		</StyledButton>
