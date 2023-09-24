@@ -48,7 +48,7 @@ export default function App() {
 }
 ```
 
-In the code snippet above, within the SpeedDial component, you can pass children in the form of either React components (like CustomButton) or regular HTML tags (like <div> and <a>). You have the flexibility to include preferred props and styles as needed for each child element. This approach allows you to customize the appearance and behavior of the action buttons inside the SpeedDial component according to your preferences.
+In the code snippet above, within the SpeedDial component, you can pass children in the form of either React components (like CustomButton) or regular HTML tags (like `<div>` and `<a>`). You have the flexibility to include preferred props and styles as needed for each child element. This approach allows you to customize the appearance and behavior of the action buttons inside the SpeedDial component according to your preferences.
 
 ## SpeedDialProps
 
