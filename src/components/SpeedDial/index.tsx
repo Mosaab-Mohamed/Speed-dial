@@ -1,6 +1,6 @@
 import Toggler from "../Toggler";
 import Button from "../Button";
-import { StyledFloatButton } from "./styled";
+import { StyledSpeedDialButton } from "./styled";
 import { SpeedDialProps } from "../../types";
 import useToggle from "../../hooks/useToggle";
 
@@ -17,13 +17,13 @@ export default function SpeedDial(props: SpeedDialProps) {
 		degree = 180,
 		backgroundColor = "#e3e3e3",
 		buttonColor = "#4f4f51",
-		buttonsList = [],
+		children,
 	} = props;
 
-	const { isOpen, setIsOpen } = useToggle();
+	const { isOpen, setIsOpen, handleClose } = useToggle();
 
 	return (
-		<StyledFloatButton
+		<StyledSpeedDialButton
 			$top={top}
 			$left={left}
 			$right={right}
@@ -37,20 +37,39 @@ export default function SpeedDial(props: SpeedDialProps) {
 				buttonColor={buttonColor}
 				dimension={dimension}
 			/>
-			{buttonsList.map((item, index) => (
+			{Array.isArray(children) ? (
+				children.map((item, index) => (
+					<Button
+						degree={degree}
+						dimension={dimension}
+						direction={direction}
+						distance={distance}
+						index={index}
+						isOpen={isOpen}
+						backgroundColor={backgroundColor}
+						nbrItems={children.length}
+						key={index}
+						handleClose={handleClose}
+					>
+						{item}
+					</Button>
+				))
+			) : (
 				<Button
-					itemButton={item}
 					degree={degree}
 					dimension={dimension}
 					direction={direction}
 					distance={distance}
-					index={index}
+					index={0}
 					isOpen={isOpen}
 					backgroundColor={backgroundColor}
-					nbrItems={buttonsList.length}
-					key={index}
-				/>
-			))}
-		</StyledFloatButton>
+					nbrItems={1}
+					key={0}
+					handleClose={handleClose}
+				>
+					{children}
+				</Button>
+			)}
+		</StyledSpeedDialButton>
 	);
 }

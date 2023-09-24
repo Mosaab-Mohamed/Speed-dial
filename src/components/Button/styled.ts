@@ -15,7 +15,7 @@ export const StyledButton = styled.button<{
 	width: ${(props) => props.$dimension}px;
 	background-color: ${(props) => props.$backgroundColor};
 	border-radius: ${(props) => props.$dimension * 0.5}px;
-	padding: ${(props) => props.$dimension * 0.25}px;
+	padding: 0;
 	cursor: pointer;
 	position: absolute;
 	left: 0;
@@ -33,9 +33,11 @@ export const StyledButton = styled.button<{
 	);
 	transition: all ${(props) => props.$index * 50 + 200}ms
 		cubic-bezier(0.71, 0.71, 0, 1.18) 0ms;
-`;
-
-export const StyledImg = styled.img`
-	width: 100%;
-	height: 100%;
+	& > * {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 `;

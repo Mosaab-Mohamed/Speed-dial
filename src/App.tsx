@@ -1,26 +1,14 @@
 import SpeedDial from "./components/SpeedDial";
-import { ItemButton } from "./types";
-import instagram from "/public/instagram.png";
 import facebook from "/public/facebook.png";
-import whatsapp from "/public/whatsapp.png";
 
-const list: ItemButton[] = [
-	{
-		imgSrc: instagram,
-		onClick: () => alert("You clicked instagram button"),
-	},
-	{
-		imgSrc: whatsapp,
-		onClick: () => window.location.assign("https://www.whatsapp.com"),
-	},
-	{
-		itemElement: (
-			<a href="https://www.facebook.com" target="_blank">
-				<img src={facebook} style={{ width: "100%", height: "100%" }} />
-			</a>
-		),
-	},
-];
+type CustomButtonProps = {
+	children?: React.ReactNode;
+	onClick?: () => void;
+};
+
+const CustomButton = ({ children, onClick }: CustomButtonProps) => {
+	return <div onClick={onClick}>{children}</div>;
+};
 
 export default function App() {
 	return (
@@ -32,7 +20,18 @@ export default function App() {
 			dimension={55}
 			distance={100}
 			direction="up"
-			buttonsList={list}
-		/>
+		>
+			<CustomButton onClick={() => alert("home")}>Home</CustomButton>
+			<CustomButton>
+				<a
+					href="https://www.facebook.com"
+					target="_blank"
+					style={{ padding: "12px" }}
+				>
+					<img src={facebook} style={{ width: "100%", height: "100%" }} />
+				</a>
+			</CustomButton>
+			<div onClick={() => window.location.assign("/about")}>About</div>
+		</SpeedDial>
 	);
 }

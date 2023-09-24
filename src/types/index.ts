@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, PropsWithChildren } from "react";
 
 export type SpeedDialProps = Partial<{
 	direction: Direction;
@@ -12,30 +12,26 @@ export type SpeedDialProps = Partial<{
 	buttonColor: string;
 	distance: number;
 	degree: number;
-	buttonsList: ItemButton[];
 	togglerStyleOverrides: CSSProperties;
 	buttonStyleOverrides: CSSProperties;
-}>;
+}> & { children: React.ReactElement | React.ReactElement[] };
 
 export type ButtonProps = {
 	isOpen: boolean;
+	handleClose: () => void;
 	dimension: number;
 	index: number;
 	nbrItems: number;
 	distance: number;
 	degree: number;
 	direction: Direction;
-	itemButton: ItemButton;
 	backgroundColor: string;
+	children: React.ReactElement;
 };
 
 export type Direction = "up" | "down" | "right" | "left" | "circular";
 
 export type ButtonType = "plus" | "hori_dots" | "vert_dots" | "hamburger";
-
-export type ItemButton =
-	| { itemElement: React.ReactElement; onClick?: () => void }
-	| { imgSrc: string; onClick?: () => void };
 
 export type TogglerProps = {
 	isOpen: boolean;

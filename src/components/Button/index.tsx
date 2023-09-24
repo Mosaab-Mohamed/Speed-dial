@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyledButton, StyledImg } from "./styled";
+import { StyledButton } from "./styled";
 import { ButtonProps } from "../../types";
 
 export default function Button(props: ButtonProps) {
@@ -12,7 +12,8 @@ export default function Button(props: ButtonProps) {
 		degree,
 		nbrItems,
 		backgroundColor,
-		itemButton,
+		children,
+		handleClose,
 	} = props;
 
 	const [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
@@ -53,11 +54,6 @@ export default function Button(props: ButtonProps) {
 		setCoordinates((prev) => ({ ...prev, x: translateX, y: translateY }));
 	}, [isOpen]);
 
-	const handleClick = (e: React.MouseEvent) => {
-		e.stopPropagation();
-		itemButton.onClick && itemButton.onClick();
-	};
-
 	return (
 		<StyledButton
 			$isOpen={isOpen}
@@ -66,18 +62,9 @@ export default function Button(props: ButtonProps) {
 			$translateX={coordinates.x}
 			$translateY={coordinates.y}
 			$backgroundColor={backgroundColor}
-			onClick={handleClick}
-			style={{ width: "" }}
+			onClick={handleClose}
 		>
-			{"itemElement" in itemButton ? (
-				itemButton.itemElement
-			) : (
-				<StyledImg
-					src={itemButton.imgSrc}
-					onClick={itemButton.onClick}
-					alt="itemButton"
-				/>
-			)}
+			{children}
 		</StyledButton>
 	);
 }

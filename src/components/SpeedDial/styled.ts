@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledFloatButton = styled.div<{
+export const StyledSpeedDialButton = styled.div<{
 	$top: number | string;
 	$left: number | string;
 	$bottom: number | string;
@@ -16,4 +16,7 @@ export const StyledFloatButton = styled.div<{
 		typeof props.$bottom === "string" ? props.$bottom : `${props.$bottom}px`};
 	right: ${(props) =>
 		typeof props.$right === "string" ? props.$right : `${props.$right}px`};
+	& * {
+		box-sizing: border-box;
+	}
 `;

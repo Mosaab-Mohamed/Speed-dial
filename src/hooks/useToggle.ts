@@ -18,5 +18,5 @@ export default function useToggle() {
 		};
 	}, []);
 
-	return { isOpen, setIsOpen };
+	return { isOpen, setIsOpen, handleClose };
 }

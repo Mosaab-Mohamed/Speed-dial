@@ -7,49 +7,48 @@ The SpeedDial component is a versatile and customizable component for creating a
 You can use it in your React application as follows:
 
 ```jsx
-import SpeedDial from "speed-dial";
-import { ItemButton } from "./types";
-import instagram from "/public/instagram.png";
+import SpeedDial from "./components/SpeedDial";
 import facebook from "/public/facebook.png";
-import whatsapp from "/public/whatsapp.png";
 
-const list: ItemButton[] = [
-	{
-		imgSrc: instagram,
-		onClick: () => alert("You clicked the Instagram button"),
-	},
-	{
-		imgSrc: whatsapp,
-		onClick: () => window.location.assign("https://www.whatsapp.com"),
-	},
-	{
-		itemElement: (
-			<a href="https://www.facebook.com" target="_blank">
-				<img src={facebook} style={{ width: "100%", height: "100%" }} />
-			</a>
-		),
-	},
-];
+type CustomButtonProps = {
+	children?: React.ReactNode,
+	onClick?: () => void,
+};
+
+const CustomButton = ({ children, onClick }: CustomButtonProps) => {
+	return <div onClick={onClick}>{children}</div>;
+};
 
 export default function App() {
 	return (
 		<SpeedDial
-			bottom="50px"
+			bottom={50}
 			left="50px"
 			buttonType="plus"
 			degree={360}
 			dimension={55}
 			distance={100}
 			direction="up"
-			buttonsList={list}
-		/>
+		>
+			<CustomButton onClick={() => window.location.assign("/about")}>
+				About
+			</CustomButton>
+			<CustomButton onClick={() => alert("home")}>Home</CustomButton>
+			<CustomButton>
+				<a
+					href="https://www.facebook.com"
+					target="_blank"
+					style={{ padding: "12px" }}
+				>
+					<img src={facebook} style={{ width: "100%", height: "100%" }} />
+				</a>
+			</CustomButton>
+		</SpeedDial>
 	);
 }
 ```
 
-In this example, we import the SpeedDial component and the required types. We also import the images for the action buttons. Then, we create a list of `ItemButton` objects, where each object represents an action button with its `imgSrc` or `itemElement` of type ReactElement and `onClick` properties.
-
-We render the SpeedDial component with various props to configure its appearance and behavior. These props are defined by the `SpeedDialProps` type, which we will explain in the next section.
+In the code snippet above, within the SpeedDial component, you can pass children in the form of either React components (like CustomButton) or regular HTML tags (like <div> and <a>). You have the flexibility to include preferred props and styles as needed for each child element. This approach allows you to customize the appearance and behavior of the action buttons inside the SpeedDial component according to your preferences.
 
 ## SpeedDialProps
 
